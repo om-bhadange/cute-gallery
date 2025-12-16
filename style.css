@@ -1,0 +1,121 @@
+/* Tailwind Preflight (minimal reset) */
+*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+::before,::after{--tw-content:''}
+html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji}
+body{margin:0;line-height:inherit}
+button{background-color:transparent;background-image:none}
+img{display:block;max-width:100%;height:auto}
+
+/* Utilities (subset) */
+.min-h-screen{min-height:100vh}
+.bg-white{background-color:#fff}
+.bg-pink-50{--tw-bg-opacity:1;background-color:rgb(253 242 248 / var(--tw-bg-opacity))}
+.text-pink-900{--tw-text-opacity:1;color:rgb(131 24 67 / var(--tw-text-opacity))}
+.text-pink-700{--tw-text-opacity:1;color:rgb(190 24 93 / var(--tw-text-opacity))}
+.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity))}
+.text-lg{font-size:1.125rem;line-height:1.75rem}
+.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-xs{font-size:.75rem;line-height:1rem}
+.font-semibold{font-weight:600}
+.p-4{padding:1rem}
+.p-3{padding:.75rem}
+.mb-2{margin-bottom:.5rem}
+.mt-2{margin-top:.5rem}
+.mt-3{margin-top:.75rem}
+.text-center{text-align:center}
+.italic{font-style:italic}
+.w-\[360px\]{width:360px}
+.w-full{width:100%}
+.h-\[200px\]{height:200px}
+.rounded-lg{border-radius:.5rem}
+.rounded-xl{border-radius:.75rem}
+.overflow-hidden{overflow:hidden}
+.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1),0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}
+.ring-1{--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}
+.ring-pink-100{--tw-ring-color:rgb(252 231 243 / 1)}
+.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+.object-cover{object-fit:cover}
+.object-contain{object-fit:contain}
+.transition-transform{transition-property:transform}
+.duration-200{transition-duration:200ms}
+.ease-out{transition-timing-function:cubic-bezier(0,0,0.2,1)}
+.hover\:scale-105:hover{transform:scale(1.05)}
+.grid{display:grid}
+.grid-cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.gap-2{gap:.5rem}
+.flex{display:flex}
+.items-center{align-items:center}
+.justify-between{justify-content:space-between}
+.col-span-6{grid-column:span 6 / span 6}
+.relative{position:relative}
+.absolute{position:absolute}
+.inset-0{inset:0}
+.left-2{left:.5rem}
+.right-2{right:.5rem}
+.z-0{z-index:0}
+.z-10{z-index:10}
+.pointer-events-none{pointer-events:none}
+
+/* Custom ring color when active on thumbnails */
+.group.active .thumb-img{outline:2px solid rgb(244 114 182);outline-offset:0;border-radius:.375rem}
+
+/* Components */
+.nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  padding:.25rem .5rem;border-radius:.5rem;line-height:1;
+  background:rgba(255,255,255,.8);color:#DB2777;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  transition:transform .15s ease, background-color .15s ease;
+  border:1px solid rgba(251,207,232,.9);
+}
+.nav-btn:hover{transform:translateY(-50%) scale(1.05);background:#fff}
+.nav-btn:active{transform:translateY(-50%) scale(0.98)}
+
+.thumb-btn{padding:0;border:0;background:transparent;display:block;border-radius:.375rem;overflow:hidden}
+.thumb-img{width:100%;height:48px;object-fit:cover;border-radius:.375rem;transition:transform .15s ease, filter .2s ease}
+.thumb-btn:hover .thumb-img{transform:scale(1.04);filter:saturate(1.1)}
+
+/* Glow on hover for main image */
+.hover\:shadow-pink-glow:hover{
+  box-shadow:0 10px 25px -5px rgba(244,114,182,.45),0 8px 16px -8px rgba(219,39,119,.35)
+}
+
+/* Popup fade-in */
+.fade-in{animation:fade-in .28s cubic-bezier(.22,.61,.36,1) both}
+@keyframes fade-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Crossfade on image swap */
+.fade-swap-in{animation:fade-swap-in .22s ease-out}
+@keyframes fade-swap-in{from{opacity:.3}to{opacity:1}}
+
+/* Floating hearts (decorative) */
+.hearts-pointer-events{overflow:hidden}
+.heart{
+  position:absolute;bottom:-12px;left:50%;
+  width:10px;height:10px;background:linear-gradient(135deg,#FB7185 0%,#F472B6 100%);
+  transform:translateX(-50%) rotate(45deg);
+  opacity:.3;border-radius:2px;filter:blur(.1px)
+}
+.heart::before,.heart::after{
+  content:"";position:absolute;background:inherit;border-radius:50%
+}
+.heart::before{width:10px;height:10px;left:-5px;top:0}
+.heart::after{width:10px;height:10px;left:0;top:-5px}
+.heart{animation:float-up linear forwards}
+@keyframes float-up{
+  0%{transform:translate(-50%,0) scale(1) rotate(45deg);opacity:.0}
+  10%{opacity:.25}
+  80%{opacity:.25}
+  100%{transform:translate(-50%,-220px) scale(1.1) rotate(45deg);opacity:0}
+}
+
+/* Full-screen adjustments */
+.main-image-container{
+  /* Fill most of the viewport height, accounting for header/paddings and thumbnails */
+  height: calc(100vh - 220px);
+  min-height: 220px;
+}
+.main-image{height:100%}
+
+/* Hide background audio element */
+.bgm-hidden{display:none}
